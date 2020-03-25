@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/mp_01?userSSL=false&serverTimezone=GMT%2B8&characterEncoding=utf-8
+    username: root
+    password: 1111
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl # 打印sql
+  # mapper-locations: classpath:com/**/*.xml #映射文件位置
+  # type-aliases-package: com.example.mybatics2.entity #实体类别名
