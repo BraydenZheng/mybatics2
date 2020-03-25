@@ -45,7 +45,8 @@ public class UserMapperTest {
 
     @Test
     public void selectById(){
-        User user = userMapper.selectById(1087982257332887553L);
+        Long id = 1242647023006658562L;
+        User user = userMapper.selectById(id);
         System.out.println(user);
     }
 
@@ -65,6 +66,11 @@ public class UserMapperTest {
     }
 
     @Test
+    public void selectByNameXML() {
+        User user = userMapper.selectByName("刘备");
+    }
+
+    @Test
     public void selectByMap(){
         HashMap<String, Object> condition = new HashMap<>();
         condition.put("name", "刘备");
@@ -76,7 +82,7 @@ public class UserMapperTest {
     @Test
     public void selectList2(){
         QueryWrapper<User> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("age", 25).likeLeft("name", "备");
+        queryWrapper.eq("age", 25).likeRight("name", "备");
         List<User> users = userMapper.selectList(queryWrapper);
         users.forEach(System.out::println);
     }
@@ -84,7 +90,7 @@ public class UserMapperTest {
     @Test
     public void selectList3(){
         QueryWrapper<User> queryWrapper = new QueryWrapper<>();
-        queryWrapper =  queryWrapper.inSql("manager_id", "select user_id from mp_user where name like '%大%' ");
+        queryWrapper =  queryWrapper.inSql("manager_id", "select id from mp_user where name like '%大%' ");
         List<User> users = userMapper.selectList(queryWrapper);
         users.forEach(System.out::println);
     }

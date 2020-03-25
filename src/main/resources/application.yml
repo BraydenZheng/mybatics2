@@ -8,5 +8,5 @@ spring:
 mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl # 打印sql
-  # mapper-locations: classpath:com/**/*.xml #映射文件位置
-  # type-aliases-package: com.example.mybatics2.entity #实体类别名
+#    mapper-locations: com.example.mybatis2.dao/*.xml #映射文件位置
+#    type-aliases-package: com.example.mybatis2.entity #实体类别名
