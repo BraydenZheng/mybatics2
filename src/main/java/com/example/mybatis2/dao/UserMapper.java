@@ -1,7 +1,7 @@
-package com.example.mybatics2.dao;
+package com.example.mybatis2.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.example.mybatics2.entity.User;
+import com.example.mybatis2.entity.User;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Mapper;
 import java.util.List;

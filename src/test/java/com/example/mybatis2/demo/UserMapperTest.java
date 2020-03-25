@@ -1,13 +1,14 @@
-package com.example.mybatics2.demo;
+package com.example.mybatis2.demo;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.example.mybatics2.dao.UserMapper;
-import com.example.mybatics2.entity.User;
+import com.example.mybatis2.dao.UserMapper;
+import com.example.mybatis2.entity.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -26,13 +27,16 @@ public class UserMapperTest {
     }
 
     //如果插入成功则返回自动生成的主键
+
+
+    @Transactional
     @Test
     public void insert(){
         User user = new User();
 //        user.setId(1180761990619959297L);
 //        user.setName("刘备");
         user.setRemark("这是备注");
-        user.setRealName("刘备");
+        user.setRealName("刘备4");
         user.setAge(25);
         int rows = userMapper.insert(user);
         System.out.println(rows);

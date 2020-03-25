@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.mybatics2.dao.UserMapper">
+<mapper namespace="com.example.mybatis2.dao.UserMapper">
     <select id="selectByName" resultType="User">
       select * from mp_user where name = #{name}
     </select>
