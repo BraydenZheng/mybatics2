@@ -29,14 +29,14 @@ public class UserMapperTest {
     //如果插入成功则返回自动生成的主键
 
 
-    @Transactional
+//    @Transactional
     @Test
     public void insert(){
         User user = new User();
 //        user.setId(1180761990619959297L);
 //        user.setName("刘备");
         user.setRemark("这是备注");
-        user.setRealName("刘备4");
+        user.setRealName("刘备5");
         user.setAge(25);
         int rows = userMapper.insert(user);
         System.out.println(rows);
@@ -65,6 +65,13 @@ public class UserMapperTest {
         users.forEach(System.out::println);
     }
 
+    @Test
+    public void randomColumnSelect() {
+        List<User> user = userMapper.selectList(null);
+        for (User u : user) {
+            System.out.println(user);
+        }
+    }
     @Test
     public void selectByNameXML() {
         User user = userMapper.selectByName("刘备");

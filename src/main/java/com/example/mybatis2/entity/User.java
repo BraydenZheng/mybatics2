@@ -1,5 +1,6 @@
 package com.example.mybatis2.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -11,8 +12,8 @@ import java.time.LocalDateTime;
 @Data
 @TableName("mp_user")
 public class User implements Serializable {
-    @TableId("id")
-    private Long userId;
+    @TableId(value = "id", type = IdType.UUID)
+    private String userId;
     @TableField("name")
     private String realName;
     private Integer age;
