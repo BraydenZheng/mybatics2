@@ -5,12 +5,17 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.mybatis2.dao.UserMapper;
 import com.example.mybatis2.entity.User;
 import com.example.mybatis2.service.UserCheckService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class UserCheckServiceImpl extends ServiceImpl<UserMapper, User> implements UserCheckService {
+
+    @Autowired
+    UserMapper userMapper;
+
     @Override
     public void queryTest() {
         QueryWrapper<User> queryWrapper = new QueryWrapper<>();

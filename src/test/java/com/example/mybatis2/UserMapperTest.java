@@ -1,4 +1,4 @@
-package com.example.mybatis2.demo;
+package com.example.mybatis2;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.mybatis2.dao.UserMapper;
@@ -30,6 +30,7 @@ public class UserMapperTest {
     @Test
     public void queryTest() {
         userCheckService.queryTest();
+        // System.out.println(1);
     }
 
     @Test
