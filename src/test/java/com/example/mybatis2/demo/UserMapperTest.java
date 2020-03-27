@@ -3,12 +3,13 @@ package com.example.mybatis2.demo;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.mybatis2.dao.UserMapper;
 import com.example.mybatis2.entity.User;
+import com.example.mybatis2.service.UserCheckService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -20,8 +21,19 @@ public class UserMapperTest {
     @Autowired
     private UserMapper userMapper;
 
+//    @Autowired
+//    private IService<User> iservice;
+
+    @Autowired
+    UserCheckService userCheckService;
+
     @Test
-    public void selectList(){
+    public void queryTest() {
+        userCheckService.queryTest();
+    }
+
+    @Test
+    public void selectList() {
         List<User> users = userMapper.selectList(null);
         users.forEach(System.out::println);
     }
@@ -29,9 +41,9 @@ public class UserMapperTest {
     //如果插入成功则返回自动生成的主键
 
 
-//    @Transactional
+    //    @Transactional
     @Test
-    public void insert(){
+    public void insert() {
         User user = new User();
 //        user.setId(1180761990619959297L);
 //        user.setName("刘备");
@@ -44,14 +56,14 @@ public class UserMapperTest {
     }
 
     @Test
-    public void selectById(){
+    public void selectById() {
         Long id = 1242647023006658562L;
         User user = userMapper.selectById(id);
         System.out.println(user);
     }
 
     @Test
-    public void selectBatchIds(){
+    public void selectBatchIds() {
 //        List<User> users = userMapper.selectBatchIds(null);
 
 //        List<Long> idList = new ArrayList<>();
@@ -72,13 +84,14 @@ public class UserMapperTest {
             System.out.println(user);
         }
     }
+
     @Test
     public void selectByNameXML() {
         User user = userMapper.selectByName("刘备");
     }
 
     @Test
-    public void selectByMap(){
+    public void selectByMap() {
         HashMap<String, Object> condition = new HashMap<>();
         condition.put("name", "刘备");
         condition.put("age", 25);
@@ -87,7 +100,7 @@ public class UserMapperTest {
     }
 
     @Test
-    public void selectList2(){
+    public void selectList2() {
         QueryWrapper<User> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("age", 25).likeRight("name", "备");
         List<User> users = userMapper.selectList(queryWrapper);
@@ -95,23 +108,23 @@ public class UserMapperTest {
     }
 
     @Test
-    public void selectList3(){
+    public void selectList3() {
         QueryWrapper<User> queryWrapper = new QueryWrapper<>();
-        queryWrapper =  queryWrapper.inSql("manager_id", "select id from mp_user where name like '%大%' ");
+        queryWrapper = queryWrapper.inSql("manager_id", "select id from mp_user where name like '%大%' ");
         List<User> users = userMapper.selectList(queryWrapper);
         users.forEach(System.out::println);
     }
 
     @Test
-    public void selectList4(){
+    public void selectList4() {
         QueryWrapper<User> queryWrapper = new QueryWrapper<>();
-        queryWrapper.nested(wq->wq.lt("age", 40).or().isNotNull("email")).likeRight("name", "王");
+        queryWrapper.nested(wq -> wq.lt("age", 40).or().isNotNull("email")).likeRight("name", "王");
         List<User> users = userMapper.selectList(queryWrapper);
         users.forEach(System.out::println);
     }
 
     @Test
-    public void selectList5(){
+    public void selectList5() {
         QueryWrapper<User> queryWrapper = new QueryWrapper<>();
         queryWrapper.select("user_id", "realName").like("name", "刘备");
         List<User> users = userMapper.selectList(queryWrapper);
